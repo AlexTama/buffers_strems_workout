@@ -1,6 +1,6 @@
 # buffers_strems_workout
 
-The propurse of this repo is to practice and fun with buffers and streams in nodejs, using the built-i modules.
+The propurse of this repo is to practice and fun with buffers and streams in nodejs, using the built-in modules.
 
 ## Basic Level
 ### File Compression Tool
