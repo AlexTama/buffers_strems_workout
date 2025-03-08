@@ -1,0 +1,17 @@
+{
+  "name": "file_compression_tool",
+  "version": "1.0.0",
+  "description": "Develop a command-line utility that compresses and decompresses files using Node.js streams and the zlib module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "fs",
+    "zlib",
+    "stream",
+    "path"
+  ],
+  "author": "Alexander Tamayo Pino",
+  "license": "ISC"
+}

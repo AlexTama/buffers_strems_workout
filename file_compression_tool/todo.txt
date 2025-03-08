@@ -1,0 +1,12 @@
+Description: Develop a command-line utility that compresses and decompresses files using Node.js streams and the zlib module.
+
+Key Features:
+
+Read files using fs.createReadStream().
+Compress data with zlib.createGzip().
+Write compressed data using fs.createWriteStream().
+Implement decompression functionality with zlib.createGunzip().
+Built-in Modules Used: fs, zlib, stream, path
+
+TODO list
+3 - Read the file and print the content.
