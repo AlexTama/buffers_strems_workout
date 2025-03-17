@@ -8,4 +8,6 @@ fs.readFile(filepath, 'utf-8', (err, data) => {
     return data;
 })
 
-fs.createReadStream(filepath, { start: 0, end: 10 });
+fs.createReadStream(filepath, { start:1 }).on('data', (stream) => {
+    console.log(`Data: ${stream}`)
+});
