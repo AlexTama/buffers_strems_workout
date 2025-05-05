@@ -1,1 +1,1 @@
-This is the txt file test
+This is the txt file test should be compressed

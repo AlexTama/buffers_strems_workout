@@ -1,13 +1,23 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 
-const filepath = path.join(process.cwd(), '/files/test.txt');
-fs.readFile(filepath, 'utf-8', (err, data) => {
-    if (err) return console.error(err);
-    console.log(data);
-    return data;
-})
+import { readFile } from 'node:fs/promises';
 
-fs.createReadStream(filepath, { start:1 }).on('data', (stream) => {
-    console.log(`Data: ${stream}`)
-});
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const filepath = `${__dirname}/files/test.txt`;
+
+async function readFiles() {
+    try {
+        const file = await readFile(`${__dirname}/files/test.txt`, { encoding: "utf-8"}, (err, data) => {
+            if (err) return err;
+            return data;
+        });
+        console.log(file);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+readFiles();
