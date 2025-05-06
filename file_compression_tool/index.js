@@ -1,23 +1,32 @@
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
-
-import { readFile } from 'node:fs/promises';
+import { open } from 'node:fs/promises'
+import { pipeline } from 'node:stream/promises'
+import { createGzip } from 'node:zlib'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const filepath = `${__dirname}/files/test.txt`;
 
-async function readFiles() {
+async function compressFile() {
     try {
-        const file = await readFile(`${__dirname}/files/test.txt`, { encoding: "utf-8"}, (err, data) => {
-            if (err) return err;
-            return data;
-        });
-        console.log(file);
+        const readHandle = await open(`${__dirname}/files/test.txt`);
+        const compressHandle = await open(`${__dirname}/files/test.txt.zip`, 'w');
+
+        const readable = readHandle.createReadStream()
+        const compressed = compressHandle.createWriteStream();
+
+        await pipeline(readable, createGzip(), compressed);
+
+        console.log('finished')
+
+
     } catch (error) {
         console.log(error);
     }
 }
 
-readFiles();
+// Read file
+compressFile();
+
